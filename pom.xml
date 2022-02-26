@@ -13,7 +13,7 @@
 	<name>MyBooks</name>
 	<description>MyBooks - project for Spring Boot</description>
 	<properties>
-		<java.version>17</java.version>
+		<java.version>11</java.version>
 	</properties>
 	<dependencies>
 		<dependency>
