@@ -1,10 +1,37 @@
 <!DOCTYPE html>
 <html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
-	<h1>Olá mundo</h1>
-</body>
+	<head th:replace="~{template :: head}"></head>
+	<body>
+		<div class="container px-4">
+			<div th:replace="~{template :: jumbotron('LIVROS')}"></div>
+				
+				<nav class="navbar navbar-expand navbar-light bg-light d-flex justify-content-between mb-3">
+					<div class="navbar-nav">
+						<a class="nav-item nav-link active" href="home">Todos</a>
+						<a class="nav-item nav-link" href="">Lidos</a>
+					</div>
+					<a href="form"><button class="btn btn-outline-secondary my-2 my-sm-0" >Novo</button></a>
+				</nav>
+				
+				 <div class="row gx-5">
+				  <div class=" col-12 col-sm-6 col-3 col-md-3 col-lg-6 col-xl-3" th:each="book : ${books}">
+					<div class="card" style="width: 16rem;">
+						  <img th:src="${book.urlCover}" class="card-img-top" alt="image cover">
+						  <div class="card-body">
+						    <h5 class="card-title" th:text="${book.title}">Card title</h5>
+						    <p class="card-text" th:text="${book.description}">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+						  </div>
+						  <ul class="list-group list-group-flush">
+						    <li class="list-group-item" th:text="${book.publisher}">An item</li>
+						    <li class="list-group-item" th:text="${book.year}">A second item</li>
+						  </ul>
+						  <div class="card-body">
+						    <a href="#" class="card-link">Edit Book</a>
+						    <a href="#" class="card-link">Remove Book</a>
+						  </div>
+					</div>
+				</div>
+				</div>
+		</div>
+	</body>
 </html>

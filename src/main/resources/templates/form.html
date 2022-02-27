@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head th:replace="~{template :: head}"></head>
+	<body>
+		<div class="container px-4">
+		<div th:replace="~{template :: jumbotron('ADICIONAR LIVROS')}"></div>
+		
+		<form class="form-floating" th:object="${requestBook}" method="POST" action="new">
+			<div class="form-floating mb-3">
+				  <input th:field="*{titleBook}" type="text" class="form-control" id="floatingInput" placeholder="name@example.com">
+				  <label for="floatingInput">Title</label>
+			</div>
+			
+			<div class="form-floating mb-3">
+				  <input th:field="*{publisherBook}" type="text" class="form-control" id="floatingPassword" placeholder="Password">
+				  <label for="floatingPassword">Publisher</label>
+			</div>
+			
+			<div class="form-floating mb-3">
+				  <input th:field="*{yearReleased}" type="text" class="form-control" id="floatingPassword" placeholder="Password">
+				  <label for="floatingPassword">Year Released</label>
+			</div>
+				
+			<div class="form-floating mb-3">
+				  <input th:field="*{url_Cover}" type="text" class="form-control" id="floatingPassword" placeholder="Password">
+				  <label for="floatingPassword">URL Cover Image</label>
+			</div>
+				
+			<div class="form-floating mb-3">
+			  <textarea th:field="*{descriptionBook}" class="form-control" placeholder="Leave a comment here" name="descriptionBook" style="height: 100px"></textarea>
+			  <label for="descriptionBook">Description book</label>
+			</div>
+			
+			<button class="btn btn-primary" type="submit">Add Book</button>
+		</form>
+	</div>
+	</body>
+</html>
