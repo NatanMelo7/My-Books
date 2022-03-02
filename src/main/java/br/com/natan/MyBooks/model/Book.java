@@ -1,6 +1,8 @@
 package br.com.natan.MyBooks.model;
 
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -17,6 +19,9 @@ public class Book {
 	private String publisher;
 	private String description;
 	private String year;
+	
+	@Enumerated(EnumType.STRING)
+	private BookStatus status;
 	
 	public Long getId() {
 		return id;
@@ -54,6 +59,13 @@ public class Book {
 	public void setDescription(String description) {
 		this.description = description;
 	}
+	public BookStatus getStatus() {
+		return status;
+	}
+	public void setStatus(BookStatus status) {
+		this.status = status;
+	}
+	
 	
 	
 }

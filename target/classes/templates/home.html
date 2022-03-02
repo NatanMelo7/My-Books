@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head th:replace="~{template :: head}"></head>
+	<body>
+		<div class="container px-4">
+			<div th:replace="~{template :: jumbotron('LIVROS')}"></div>
+				
+				<nav class="navbar navbar-expand navbar-light bg-light d-flex justify-content-between mb-3">
+					<div class="navbar-nav">
+						<a th:classappend="${status} == null ? 'active'" class="nav-item nav-link" href="/home">Todos</a>
+						<a th:classappend="${status} == 'read' ? 'active'" class="nav-item nav-link" href="/home/read">Lidos</a>
+						<a th:classappend="${status} == 'not_read' ? 'active'" class="nav-item nav-link" href="/home/not_read">Não Lidos</a>
+						<a th:classappend="${status} == 'wishlist' ? 'active'" class="nav-item nav-link" href="/home/wishlist">Lista de Desejos</a>
+					</div>
+					<a href="form/new"><button class="btn btn-outline-secondary me-2 my-2 my-sm-0">Novo</button></a>
+				</nav>
+				
+				 <div class="row gx-5">
+				  <div class=" col-12 col-sm-6 col-3 col-md-3 col-lg-6 col-xl-3" th:each="book : ${books}">
+					<div class="card mt-3 ms-3" style="width: 16rem;">
+						 <th:block th:switch="${book.status.name()}">
+							<h5 th:case="'READ'" class="card-header bg-success p-2 text-dark bg-opacity-10 text-center text-uppercase">Lido</h5>
+							<h5 th:case="'NOT_READ'" class="card-header bg-danger p-2 text-dark bg-opacity-10 text-center text-uppercase">Não Lido</h5>
+							<h5 th:case="'WISHLIST'" class="card-header bg-warning p-2 text-dark bg-opacity-10 text-center text-uppercase">Desejado</h5>
+						  </th:block>
+						  <img th:src="${book.urlCover}" class="card-img-top" alt="image cover">
+						  <div class="card-body">
+						    <h5 class="card-title" th:text="${book.title}">Card title</h5>
+						    <p class="card-text" th:text="${book.description}">content</p>
+						  </div>
+						  <ul class="list-group list-group-flush">
+						    <li class="list-group-item" th:text="${book.publisher}" id="publisher">An item</li>
+						    <li class="list-group-item" th:text="${book.year}">A second item</li>
+						
+						    <a th:href="@{/home/remove(id=${book.id})}" class="card-link list-group-item text-center fst-italic">Remover Livro</a>
+						  </ul>
+					</div>
+				</div>
+				</div>
+		</div>
+	</body>
+	<footer th:replace="~{template :: footer}"></footer>
+</html>

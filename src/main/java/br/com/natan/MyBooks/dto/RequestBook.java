@@ -1,13 +1,16 @@
 package br.com.natan.MyBooks.dto;
 
 import br.com.natan.MyBooks.model.Book;
+import br.com.natan.MyBooks.model.BookStatus;
 
 public class RequestBook {
+	private String idBook;
 	private String titleBook;
 	private String publisherBook;
 	private String yearReleased;
 	private String descriptionBook;
-	private String url_Cover;
+	private String urlCover;
+	private String selectStatus;
 
 	public Book toBook() {
 		Book book = new Book();
@@ -17,7 +20,8 @@ public class RequestBook {
 		book.setPublisher(publisherBook);
 		book.setUrlCover(descriptionBook);
 		book.setYear(yearReleased);
-		book.setUrlCover(url_Cover);
+		book.setUrlCover(urlCover);
+		book.setStatus(BookStatus.valueOf(this.getSelectStatus()));
 		
 		return book;
 	}
@@ -54,12 +58,28 @@ public class RequestBook {
 		this.descriptionBook = descriptionBook;
 	}
 
-	public String getUrl_Cover() {
-		return url_Cover;
+	public String getUrlCover() {
+		return urlCover;
 	}
 
-	public void setUrl_Cover(String url_Cover) {
-		this.url_Cover = url_Cover;
+	public void setUrlCover(String url_Cover) {
+		this.urlCover = url_Cover;
+	}
+
+	public String getSelectStatus() {
+		return selectStatus;
+	}
+
+	public void setSelectStatus(String select_status) {
+		this.selectStatus = select_status;
+	}
+
+	public String getIdBook() {
+		return idBook;
+	}
+
+	public void setIdBook(String idBook) {
+		this.idBook = idBook;
 	}
 
 }
